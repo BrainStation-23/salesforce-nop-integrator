@@ -1,0 +1,64 @@
+<template>
+    <lightning-card title="nopCommerce - Salesforce Customer Field Mapping " icon-name="custom:custom14">
+
+        <div style="padding:5px 15px;">
+
+            <div class="a" style="padding:10px 15px;">
+                <h2 class="slds-text-heading_small">
+                    nopCommerce Data: <b>{nopTableName}</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Salesforce Object: <b>{sfObjectName}</b>
+                </h2>    
+            </div>
+ 
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered"
+                aria-label="Example default base table of Opportunities">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Opportunity Name">Nop Field Label</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Account Name">Nop Field API Name</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Close Date">Nop Data Type</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Stage">SF Mapping Fields</div>
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <template  for:each={nopData} for:item="nopfield">
+                        <tr class="slds-hint-parent" key={nopfield.NopKey}>
+                            <td data-label="Nop Label">
+                                <div class="slds-truncate">{nopfield.NopLabel}</div>
+                            </td>
+                            <td data-label="Nop Key">
+                                <div class="slds-truncate">{nopfield.NopKey}</div>
+                            </td>
+                            <td data-label="Nop Data Type">
+                                <div class="slds-truncate">{nopfield.NopDataType}</div>
+                            </td>
+                            <td data-label="SF_FieldName">
+                                <div class="slds-var-p-around_small">
+                                    <lightning-combobox name="SF_FieldName" value={nopfield.SfFieldSelected} variant="label-hidden" placeholder="-Select-" class="mapfield"
+                                        options={pickListvalues} onchange={handleSFFieldChange} data-nop-field-name={nopfield.NopKey} data-nop-data-type={nopfield.NopDataType}>
+                                    </lightning-combobox>
+                                </div>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="padding:5px 15px;">
+            <!-- Brand variant: Identifies the primary action in a group of buttons -->
+            <lightning-button variant="brand" label="Save Mapping!!!" title="Successful action" onclick={handleSaveMapping}
+                class="slds-align_absolute-center"></lightning-button>
+        </div>
+
+    </lightning-card>
+    
+</template>
