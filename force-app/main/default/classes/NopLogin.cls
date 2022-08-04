@@ -3,7 +3,6 @@ public class NopLogin {
     public static void setLoginToken(){
         
         HttpRequest req = new HttpRequest();
-
         NopModels.MetaDataModel nopMetaData = new NopMetaDataService().GetFromNopMetaData();
         NopModels.LoginModel login = new NopModels.LoginModel();
         
@@ -13,28 +12,14 @@ public class NopLogin {
         login.Data.Password = nopMetaData.Password;
         
         req.setMethod('POST');
-        
         string body = JSON.serialize(login);
-        
         req.setBody(body); 
-        
         Http http = new Http();
         HTTPResponse res = http.send(req);
-        
         
         Map<String,Object> rawResMp = (Map<String,Object>) JSON.deserializeUntyped(res.getBody());
         Map<String,Object> resDataMp = (Map<String,Object>) rawResMp.get('Data');
         String token = (String) resDataMp.get('Token');
-        NopMetadataUtility.upsertRecord(token);
-        
-        //System.debug(mpRawRes);
-        //System.debug(token);
-        
-        //return token;
-        //Update records
-        //List<NopCommerce_Setting__mdt> MetadataList1 = [SELECT Email,Password,Token FROM NopCommerce_Setting__mdt]; //MasterLabel, DeveloperName is required when query as we need them in update
-        //MetadataList1[0].Token = token;
-        //String jobId2 = NopCommerce_Setting__mdt.upsertMetadata(MetadataList1);
-
+        NopMetadataUtility.upsertRecord(token);        
     }
 }

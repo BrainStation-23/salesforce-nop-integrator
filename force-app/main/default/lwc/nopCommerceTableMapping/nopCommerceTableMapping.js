@@ -30,7 +30,11 @@ export default class NopCommerceTableMapping extends LightningElement {
         }
         else if(this.nopTableName == 'Product'){
             this.nopData = this.nopProductData;
-        }        
+        } 
+        else if(this.nopTableName == 'Order'){
+            this.nopData = this.nopOrderData;
+        }
+        
 
         console.log("sfObjectName ====="+this.sfObjectName);
 
@@ -319,5 +323,53 @@ nopProductData = [{
     NopKey: 'VendorId',
     NopDataType: 'Number'
 }];
+
+
+nopOrderData = [{
+    //nopDataDefinitions = {'Customer':[]};
+    //nopDataDefinitions['Customer'] = [{
+
+            NopLabel: 'Id',
+            NopKey: 'Id',
+            NopDataType: 'Number'
+        }, {
+            NopLabel: 'CustomOrderNumber',
+            NopKey: 'CustomOrderNumber',
+            NopDataType: 'Number'
+        }, {
+            NopLabel: 'OrderStatus',
+            NopKey: 'OrderStatus',
+            NopDataType: 'Picklist'
+        }, {
+            NopLabel: 'StoreName',
+            NopKey: 'StoreName',
+            NopDataType: 'String'
+        }, {
+            NopLabel: 'CustomerEmail',
+            NopKey: 'CustomerEmail',
+            NopDataType: 'String'
+        }, {
+            NopLabel: 'CustomerFullName',
+            NopKey: 'CustomerFullName',
+            NopDataType: 'String'
+        }, {
+            NopLabel: 'OrderTotal',
+            NopKey: 'OrderTotalr',
+            NopDataType: 'Price'
+        }, {
+            NopLabel: 'IsLoggedInAsVendor',
+            NopKey: 'IsLoggedInAsVendor',
+            NopDataType: 'Boolean'
+        }, {
+            NopLabel: 'PaymentStatus',
+            NopKey: 'PaymentStatus',
+            NopDataType: 'Picklist'
+        }, {
+            NopLabel: 'CustomerId',
+            NopKey: 'CustomerId',
+            NopDataType: 'Number'
+        
+}];
+
 
 }
