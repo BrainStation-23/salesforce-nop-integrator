@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata" fqn="nopDataRetrieve">
+    <apiVersion>54.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Nop-Data Retrieve</masterLabel>
+  <targets>
+    <target>lightning__AppPage</target>
+    <target>lightning__RecordPage</target>
+    <target>lightning__HomePage</target>
+  </targets>
+
+  <targetConfigs>
+    <targetConfig targets="lightning__AppPage">
+        <property name="nopTableName" label="nopTableName" type="String" default="Customer" required="true"/>
+        <property name="sfObjectName" label="sfObjectName" type="String" default="Contact" required="true"/>
+        <property name="nopExternalValue" label="nopExternalValue" type="String" default="Username" required="true"/>
+    </targetConfig>
+  </targetConfigs> 
+
+</LightningComponentBundle>

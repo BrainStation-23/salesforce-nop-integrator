@@ -1,0 +1,25 @@
+<template>
+    <lightning-card title="nopCommerce - Data Retrieve " icon-name="custom:custom14">
+
+        <div style="padding:5px 15px;">
+            <div class="a" style="padding:10px 15px;">
+                <h2 class="slds-text-heading_small">
+                    nopCommerce Table: <b>{nopTableName}</b> &nbsp;&nbsp;&nbsp;&nbsp; Salesforce Object: <b>{sfObjectName}</b> &nbsp; Nop External Search Field: <b>{nopExternalValue}</b>
+                </h2>
+            </div>
+        </div>
+
+        
+
+        <div style="padding:5px 15px;">
+            <lightning-button variant="brand" label="Start Now!!!" title="Successful action" onclick={handleStartSync}
+                class="slds-align_absolute-center"></lightning-button>
+                <template if:true={isLoading}>
+                    <div class="loader"></div>
+                    Please Wait....
+                </template>
+        </div>
+
+    </lightning-card>
+
+</template>
